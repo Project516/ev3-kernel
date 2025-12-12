@@ -868,7 +868,6 @@ static int legoev3_fiq_probe(struct platform_device *pdev)
 	if (!ret) {
 		ret = gpio_direction_output(pdata->status_gpio, 0);
 	}
-	
 	if (ret < 0) {
 		if (ret != -EPROBE_DEFER) {
 			dev_err(&pdev->dev,
