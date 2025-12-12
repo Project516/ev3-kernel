@@ -864,7 +864,10 @@ static int legoev3_fiq_probe(struct platform_device *pdev)
 	fiq_data->timer_irq = pdata->timer_irq;
 	fiq_data->ehrpwm_irq = pdata->ehrpwm_irq;
 
-	ret = gpio_request_one(pdata->status_gpio, GPIOF_INIT_LOW, "fiq status");
+	ret = gpio_request(pdata->status_gpio, "fiq status");
+	if (!ret) {
+		ret = gpio_direction_output(pdata->status_gpio, 0);
+	}
 	if (ret < 0) {
 		if (ret != -EPROBE_DEFER) {
 			dev_err(&pdev->dev,
