@@ -866,7 +866,7 @@ static int legoev3_fiq_probe(struct platform_device *pdev)
 
 	ret = gpio_request(pdata->status_gpio, "fiq status");
 	if (!ret) {
-    	ret = gpio_direction_output(pdata->status_gpio, 0);
+		ret = gpio_direction_output(pdata->status_gpio, 0);
 	}
 	
 	if (ret < 0) {
